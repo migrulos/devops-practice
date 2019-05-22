@@ -1,0 +1,28 @@
+{
+    "variables": {
+        "proj_id": null,
+        "m_type": "f1-micro"
+    },
+
+    "builders": [
+        {
+        "type": "googlecompute",
+        "project_id": "{{user `proj_id`}}",
+        "source_image_family": "centos-7",
+        "zone": "europe-west1-b",
+        "image_family": "apache2-test",
+        "image_name": "apache2-test-{{timestamp}}",
+        "machine_type": "{{user `m_type`}}",
+        "preemptible": "true",
+        "ssh_username": "pes"
+        }
+    ],
+
+    "provisioners": [
+        {
+        "type": "shell",
+        "script": "scripts/install-apache.sh",
+        "execute_command": "sudo {{.Path}}"
+        }
+    ]
+}

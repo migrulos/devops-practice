@@ -8,6 +8,7 @@ gcloud compute instances create apache-test \
 --image-project=ubuntu-os-cloud \
 --machine-type=g1-small \
 --tags http-server \
+--preemptible \
 --restart-on-failure \
 --zone=europe-west3-a \
 --metadata-from-file startup-script=install-apache2.sh
