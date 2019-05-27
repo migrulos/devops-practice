@@ -13,12 +13,25 @@ resource "google_compute_instance" "example-instance" {
             image = "centos-7"
         }
     }
+#    tags = ["open-5000tcp"]
+    tags = ["http-server"]
     metadata = {
         sshKeys = "${var.gce_ssh_user}:${file(var.gce_ssh_pub_key_file)}"
     }
 
-network_interface {
-    network = "default"
-    access_config {}
+    network_interface {
+        network = "default"
+        access_config {}
+    }
 }
-}
+
+#resource "google_compute_firewall" "open-port-example" {
+#    name = "open-port-example"
+#    network = "default"
+#    allow {
+#        protocol = "tcp"
+#        ports = ["5000"]
+#    }
+#    source_ranges = ["0.0.0.0/0"]
+#    target_tags = ["open-5000tcp"]
+#}

@@ -1,0 +1,3 @@
+project = "project-id"
+gce_ssh_user = "user"
+gce_ssh_pub_key_file = "~/.ssh/id_rsa.pub"
