@@ -1,6 +1,7 @@
 {
     "variables": {
         "proj_id": null,
+        "ssh_username": null,
         "m_type": "f1-micro"
     },
 
@@ -14,7 +15,7 @@
         "image_name": "apache2-test-{{timestamp}}",
         "machine_type": "{{user `m_type`}}",
         "preemptible": "true",
-        "ssh_username": "pes"
+        "ssh_username": "{{user `ssh_username`}}"
         }
     ],
 
