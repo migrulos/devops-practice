@@ -3,3 +3,5 @@
 *.tfstate.backup
 *.tfvars
 .terraform/
+*.retry
+ansible/roles/aidbox/vars/main.yml

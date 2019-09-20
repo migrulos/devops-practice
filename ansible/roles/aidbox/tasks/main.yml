@@ -1,0 +1,11 @@
+---
+# tasks file for aidbox
+
+- name: install docker
+  include: docker.yml
+
+- name: install docket-compose
+  include: docker-compose.yml
+
+- name: deploy aidbcx
+  include: deploy-aidbox.yml

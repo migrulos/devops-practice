@@ -1,0 +1,8 @@
+---
+- name: Install docker-compose
+  hosts: all
+  gather_facts: yes
+  become: yes
+
+  roles:
+    - aidbox

@@ -1,0 +1,5 @@
+- name: Download docker-compose
+  get_url:
+    url: "{{ docker_compose_url }}"
+    dest: /usr/local/bin/docker-compose
+    mode: 'a+x'

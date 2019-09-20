@@ -1,0 +1,29 @@
+- name: Install git and pip
+  yum:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+  vars:
+    packages:
+    - git
+    - python-pip
+
+- name: Pip install docker and docker-compose
+  pip:
+    name: ['docker', 'docker-compose']
+
+- name: Clone repository
+  git:
+    repo: 'https://github.com/Aidbox/devbox.git'
+    dest: /usr/local/etc/aidbox
+    version: master
+
+- name: copy config file
+  template:
+    src: env.j2
+    dest: /usr/local/etc/aidbox/.env
+  notify: restart docker-compose
+
+- name: run docker-compose
+  docker_compose:
+    project_src: /usr/local/etc/aidbox/

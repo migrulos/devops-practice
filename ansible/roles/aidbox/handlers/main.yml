@@ -1,0 +1,7 @@
+---
+# handlers file for aidbox
+- name: restart docker-compose
+  docker_compose:
+    project_src: /usr/local/etc/aidbox/
+    restarted: yes
+
