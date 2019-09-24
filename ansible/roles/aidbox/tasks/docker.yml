@@ -25,6 +25,23 @@
     - docker-ce-cli
     - containerd.io
 
+- name: Create "docker" group
+  group:
+    name: docker
+    state: present
+
+- name: Add remote user to "docker" group
+  user:
+    name: "{{ lookup('env','USER') }}"
+    group: docker
+    append: yes
+  register: add_to_group
+
+# unfortunately meta module doesn`t support 'when' condition and doesn`t work correctly in handlers: https://github.com/ansible/ansible/issues/50306 and https://github.com/ansible/ansible/issues/41313#issuecomment-395951036
+- name: Reset ssh connection to allow user changes to affect 'current login user'
+  meta: reset_connection
+  when: add_to_group.changed
+
 - name: Start and enable docker service
   systemd:
     state: started

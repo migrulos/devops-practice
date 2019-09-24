@@ -27,3 +27,4 @@
 - name: run docker-compose
   docker_compose:
     project_src: /usr/local/etc/aidbox/
+  become: no
