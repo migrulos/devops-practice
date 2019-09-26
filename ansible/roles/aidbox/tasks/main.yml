@@ -4,8 +4,8 @@
 - name: install docker
   include: docker.yml
 
-- name: install docket-compose
+- name: install docker-compose
   include: docker-compose.yml
 
-- name: deploy aidbcx
+- name: deploy aidbox
   include: deploy-aidbox.yml
