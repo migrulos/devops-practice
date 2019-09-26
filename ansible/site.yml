@@ -1,5 +1,5 @@
 ---
-- name: Install docker-compose
+- name: Deploy Aidbox
   hosts: all
   gather_facts: yes
   become: yes
