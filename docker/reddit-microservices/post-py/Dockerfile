@@ -4,7 +4,7 @@ RUN apk --no-cache add gcc=5.3.0-r0 musl-dev=1.1.14-r16
 RUN pip install flask pymongo
 
 WORKDIR /app
-ADD . /app
+COPY . /app
 
 RUN pip install -r /app/requirements.txt
 

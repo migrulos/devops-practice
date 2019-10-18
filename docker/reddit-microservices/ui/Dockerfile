@@ -4,7 +4,7 @@ ENV APP_HOME /app
 
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
-ADD Gemfile* $APP_HOME/
+COPY Gemfile* $APP_HOME/
 
 RUN apk update && apk add --no-cache build-base 
 
