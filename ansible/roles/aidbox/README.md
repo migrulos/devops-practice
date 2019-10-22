@@ -17,9 +17,15 @@ Role Variables
 Example Playbook
 ----------------
 
-An example playbook is included at site.yml. To run it:
+```yaml
+- name: Deploy Aidbox
+  hosts: all
+  gather_facts: yes
+  become: yes
 
-ansible-playbook site.yml
+  roles:
+    - aidbox
+```
 
 License
 -------
