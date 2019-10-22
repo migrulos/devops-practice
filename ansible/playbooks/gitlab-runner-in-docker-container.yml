@@ -1,0 +1,53 @@
+---
+# The playbook will start and register gitlab-runner in docker-container
+- name: Start and register gitlab-runner in docker-container
+  hosts: all
+  gather_facts: no
+  become: yes
+  vars:
+    runner_name: first
+    runner_executor: "docker"
+    runner_url: "https://gitlab.com/"
+    runner_token: "PROJECT_REGISTRATION_TOKEN"
+    runner_description: "docker-runner"
+    runner_tags: 
+      - docker
+      - linux
+
+  tasks:
+    - name: start gitlab-runner in docker-container
+      docker_container:
+        name: 'gitlab-runner-{{ runner_name }}'
+        image: gitlab/gitlab-runner:latest
+        volumes:
+          - '/srv/gitlab-runner-{{ runner_name }}/config:/etc/gitlab-runner'
+          - /var/run/docker.sock:/var/run/docker.sock
+        restart_policy: always
+        detach: yes
+
+    - name: Check config file
+      stat:
+        path: '/srv/gitlab-runner-{{ runner_name }}/config/config.toml'
+      register: toml
+
+    - name: register gitlab-runner in docker-container if config.toml exist and empty
+      docker_container:
+        name: gitlab-runner-register
+        detach: no
+        cleanup: yes
+        image: gitlab/gitlab-runner:latest
+        volumes:
+          - '/srv/gitlab-runner-{{ runner_name }}/config:/etc/gitlab-runner'
+        command: >
+          register
+          --non-interactive
+          --executor '{{ runner_executor }}'
+          --docker-image alpine:latest
+          --url '{{ runner_url }}'
+          --registration-token '{{ runner_token }}'
+          --description '{{ runner_description }}'
+          --tag-list '{{ runner_tags | join(",") }}'
+          --run-untagged="true"
+          --locked="false"
+          --access-level="not_protected"
+      when: toml.stat.size == 0

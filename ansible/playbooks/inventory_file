@@ -1,0 +1,2 @@
+[test_group]
+docker-host ansible_ssh_user=docker-user ansible_ssh_private_key_file=~/.docker/machine/machines/docker-host/id_rsa
