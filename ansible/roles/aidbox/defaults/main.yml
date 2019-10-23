@@ -1,5 +1,4 @@
 ---
 # defaults file for aidbox
-docker_compose_url: https://github.com/docker/compose/releases/download/1.24.1/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}
 license_id: your_id
 license_key: your_key

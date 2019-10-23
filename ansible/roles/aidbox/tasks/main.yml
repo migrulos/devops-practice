@@ -1,11 +1,5 @@
 ---
 # tasks file for aidbox
 
-- name: install docker
-  include: docker.yml
-
-- name: install docker-compose
-  include: docker-compose.yml
-
 - name: deploy aidbox
   include: deploy-aidbox.yml

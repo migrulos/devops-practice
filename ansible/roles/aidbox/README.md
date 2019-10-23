@@ -3,23 +3,16 @@ Aidbox
 
 Deploy Aidbox (https://docs.aidbox.app/installation/setup-aidbox.dev) on CentOS7
 
-
-Foreword (disclaimer)
----------------------
-
-This role was made just to practice at Ansible, and most of it is just a docker/docker-compose installation.  
-To install docker in Linux, you can use the role geerlingguy.docker and then just apply tasks/deploy-aidbox.yml to deploy Aidbox.
-
 Requirements
 ------------
 
-CentOS7
+CentOS7  
+Installed docker and docker-compose (to install docker in Linux, you can use the role geerlingguy.docker)
 
 Role Variables
 --------------
 
-"license_id" and "license_key" - get license id and key here: https://license-ui.aidbox.app  
-"docker_compose_url" - last release of docker-compose
+"license_id" and "license_key" - get license id and key here: https://license-ui.aidbox.app
 
 Example Playbook
 ----------------
@@ -37,7 +30,7 @@ Example Playbook
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------

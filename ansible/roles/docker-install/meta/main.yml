@@ -1,6 +1,6 @@
 galaxy_info:
   author: migrulos
-  description: role for aidbox deploy
+  description: test role for installation docker and docker-compose in CentOS7
   company: personal
 
   license: MIT

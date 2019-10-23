@@ -1,0 +1,8 @@
+---
+# tasks file
+
+- name: install docker
+  include: docker.yml
+
+- name: install docker-compose
+  include: docker-compose.yml
