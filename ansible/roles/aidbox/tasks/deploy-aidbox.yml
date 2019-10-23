@@ -24,7 +24,9 @@
     dest: /usr/local/etc/aidbox/.env
   notify: restart docker-compose
 
+# By default docker-compose runs as the root.
+# If you want to run it as user, you need to make sure that user have grants ro run docker-compose and uncomment "become" section
 - name: run docker-compose
   docker_compose:
     project_src: /usr/local/etc/aidbox/
-  become: no
+  #become: no
